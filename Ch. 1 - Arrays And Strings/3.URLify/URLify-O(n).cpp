@@ -1,53 +1,41 @@
-#include<bits/stdc++.h>
+#include <iostream>
 
-using namespace std;
-int main()
- {
-	//code
-    int t;
-    cin>>t;
-    while(t--){
-        cin.ignore();
-        string s;
-        getline(cin, s);
+int main() {
+	int T, K, c;
+	std::string s;
+	std::cin>>T;
+	while(T--) {
+		c = 0;
+		std::cin.ignore();
+		std::getline(std::cin, s, '\n');
+		std::cin.clear();
+		std::cin>>K;
         
-        int len;
-        cin>>len;
-        
-        // cout<<s<<l<<"\n";
-        
-        int spaces = 0;
-        
-        for(int i=0; i<len; i++){
-            if(s[i]==' ')
-                spaces++;
-        }
-
-        // cout<<"Total spaces:"<<spaces<<"\n";
-        
-        /* 
-        Each space has to be replaced by %20 i.e, total 3 characters in one space
-        there we need two additional space for replacing ' ' with %20
-        */
-        s.resize(len + spaces*2, ' ');
-        int new_len = s.length();
-        int j=new_len;
-        
-        // cout<<j<<"\n";
-        
-        for(int i=len-1; i>0; i--){
-            if(s[i]==' '){
-                s[j-1]='0';
-                s[j-2]='2';
-                s[j-3]='%';
-                j-=3;
-            }
-            else{
-                s[j-1]=s[i];
-                j-=1;
-            }
-        }
-        cout<<s<<"\n";
-    } 
+// 	    Remove surrounding whitespace from a std::string.
+            s.erase(0, s.find_first_not_of(' '));
+	    s.erase(s.find_last_not_of(' ') + 1);		
+	    
+	    for(int i=0;i<s.size();i++)
+			if(s[i] == ' ')
+				c++;
+		K = s.size();
+		s.resize(s.size() + c*2, ' ');
+		for(int i=K-1;i>=0;i--)
+			if(s[i] == ' '){
+				s[i+(c*2)-1] = ' ';
+				s[i+(c*2)-2] = ' ';
+				s[i+(c*2)] = ' ';
+				c--;
+			} else
+				s[i+(c*2)] = s[i];
+		for(int i=0;i<s.size();i++)
+			if(s[i] == ' '){
+				s[i] = '%';
+				s[i+1] = '2';
+				s[i+2] = '0';
+				i += 2;
+			}
+		std::cout<<s<<std::endl;
+	}
 	return 0;
 }
