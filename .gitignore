@@ -31,5 +31,10 @@
 *.in
 .exe
 
-#Ignore all except cpp
+# Ignore Everything
+*
+
+# But not .cpp
 !*.cpp
+!.gitignore
+!README.md
