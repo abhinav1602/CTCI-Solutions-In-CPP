@@ -14,7 +14,7 @@ bool oneReplaceAway(string s1, string s2){
 		if(s1[i] != s2[j]){
 			// if first change is already checked then return false as there are more than one dissimilarities
 			if(firstChangeDone){
-				cout<<"IGI@"<< i<<" "<<j<<"\n";
+				//cout<<"IGI@"<< i<<" "<<j<<"\n";
 				return false;	
 			}
 			firstChangeDone = true;
