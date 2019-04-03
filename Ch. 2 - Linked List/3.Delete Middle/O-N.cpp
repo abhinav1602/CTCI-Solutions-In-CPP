@@ -15,7 +15,7 @@ struct Node *newNode(int data){
 
 
 // returns middle element in linked list
-int middleElement(Node *head) {
+void deleteMiddleElement(Node *head) {
     int len = 0;
     Node *curr = head;
 
@@ -30,10 +30,19 @@ int middleElement(Node *head) {
     int target = ceil(len/2);
     // cout<<"L:"<<len<<"T:"<<target<<"\n";
     
-    for(int i=1; i<=target; i++)
+    for(int i=1; i<target; i++)
         curr = curr->next;
     
-    return curr->data;
+    curr->next = curr->next->next;
+    // return curr->data;
+}
+
+void printList(Node *head) {
+    while(head!=NULL){
+        cout<<head->data<<" ";
+        head = head->next;
+    }
+    cout<<"\n";
 }
 
 
@@ -58,8 +67,8 @@ int main(){
             curr = curr->next;
         }
 		
-        int middle_element = middleElement(head);
-        cout<<middle_element<<"\n";
+        deleteMiddleElement(head);
+        printList(head);
     }
 	return 0;
 }
