@@ -4,4 +4,6 @@ I will be adding Chapterwise solutions to questions from Cracking the Coding Int
 ## Updates
 Chapter 1: Completed and added
 
-Chapter 2: WIP(branch: Chapter2)
+Chapter 2: Completed and added
+
+Chapter 3: Not started
