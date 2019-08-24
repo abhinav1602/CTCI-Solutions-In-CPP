@@ -17,7 +17,7 @@ bool isPallindrome(Node *head){
     Node *slow = head, *fast = head;
     stack<int> s;
 
-    while(slow != NULL && fast != NULL){
+    while(slow != NULL && fast!=NULL && fast->next!=NULL){
         s.push(slow->data);
         slow = slow->next;
         fast = fast->next->next;
