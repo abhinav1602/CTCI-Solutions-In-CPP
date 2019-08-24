@@ -24,7 +24,7 @@ bool isPallindrome(Node *head){
     }
     
     while(slow!=NULL && !s.empty()){
-    	cout<<"Comparing:"<< s.top() << " and " << slow->data<<"\n";
+    	// cout<<"Comparing:"<< s.top() << " and " << slow->data<<"\n";
     	
         if(s.top() != slow->data){
             return false;
