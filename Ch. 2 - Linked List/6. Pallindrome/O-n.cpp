@@ -13,22 +13,29 @@ struct Node *newNode(int data){
     return n;
 }
 
-bool isPallindrome(Node *head){
-    Node *slow = head, *fast = head;
+ bool isPalindrome(Node* head) {
+    Node *slow = head, *fast = head;        
     stack<int> s;
-
-    while(slow != NULL && fast!=NULL && fast->next!=NULL){
-        s.push(slow->data);
+    
+    if (slow==NULL)
+        return true;
+    
+    s.push(slow->data);
+    
+    while(fast && fast->next){
         slow = slow->next;
         fast = fast->next->next;
+        s.push(slow->data);
     }
     
-    while(slow!=NULL && !s.empty()){
-    	// cout<<"Comparing:"<< s.top() << " and " << slow->data<<"\n";
-    	
-        if(s.top() != slow->data){
+    if(!fast)
+        s.pop();
+            
+    while(slow!=NULL && !s.empty()) {
+        // cout << " Comparing: " << s.top() << " and " << slow->data <<"\n";
+        if(!s.empty() && s.top() != slow->data)
             return false;
-        }
+        
         s.pop();
         slow = slow->next;
     }
